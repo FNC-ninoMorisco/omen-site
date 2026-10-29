@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEN — Gaming Community</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #08070d;
+    color: #f7f3ff;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff18;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.nav-right {
+    color: #b9abc9;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero {
+    min-height: 510px;
+    padding: 90px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 40%, #6d28d930, transparent 55%);
+}
+
+.eyebrow {
+    color: #c4b5fd;
+    border: 1px solid #8b5cf655;
+    background: #8b5cf615;
+    border-radius: 30px;
+    padding: 10px 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin-top: 25px;
+    font-size: clamp(90px, 18vw, 175px);
+    line-height: 1;
+    font-weight: 1000;
+    letter-spacing: -10px;
+    background: linear-gradient(#ffffff, #c4a7ff 50%, #6d28d9);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: appear 1s ease;
+}
+
+.line {
+    width: 240px;
+    height: 2px;
+    margin: 25px 0;
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+}
+
+.tagline {
+    font-size: clamp(13px, 2vw, 18px);
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.subtag {
+    margin-top: 14px;
+    color: #92879f;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 20px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    box-shadow: 0 8px 30px #7c3aed45;
+}
+
+.btn-secondary {
+    border: 1px solid #a78bfa55;
+    background: #ffffff08;
+}
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 65px 22px 85px;
+}
+
+.kicker {
+    color: #a78bfa;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section h2 {
+    margin-top: 12px;
+    font-size: clamp(28px, 5vw, 43px);
+    letter-spacing: -1px;
+}
+
+.section-desc {
+    margin-top: 12px;
+    color: #92879f;
+    font-size: 14px;
+}
+
+.counter {
+    margin-top: 18px;
+    color: #a78bfa;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.member-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.member {
+    position: relative;
+    padding: 13px;
+    border: 1px solid #ffffff18;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #191222, #0e0b13);
+    transition: .3s;
+    overflow: hidden;
+}
+
+.member:hover {
+    transform: translateY(-7px);
+    border-color: #a78bfa;
+    box-shadow: 0 12px 35px #8b5cf625;
+}
+
+.member-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #211137;
+    border: 1px solid #a78bfa35;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.member-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: 6px 9px;
+    border-radius: 5px;
+    background: #0b0818dd;
+    border: 1px solid #c4b5fd66;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.member-info {
+    padding: 17px 3px 8px;
+}
+
+.member-label {
+    color: #92879f;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.member-name {
+    margin-top: 8px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.member-role {
+    margin-top: 8px;
+    color: #a78bfa;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.join {
+    max-width: 1106px;
+    margin: 0 auto 70px;
+    padding: 45px;
+    border-radius: 20px;
+    border: 1px solid #a78bfa44;
+    background: linear-gradient(120deg, #211137, #100b17);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.join h2 {
+    margin-top: 12px;
+    font-size: clamp(26px, 4vw, 40px);
+}
+
+.join p {
+    margin-top: 12px;
+    color: #b2a5c2;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer {
+    padding: 25px 20px;
+    border-top: 1px solid #ffffff15;
+    color: #82758f;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.footer strong {
+    color: #c4a7ff;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 700px) {
+    .member-track {
+        grid-template-columns: 1fr;
+    }
+
+    .member {
+        max-width: 420px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .join {
+        margin: 0 16px 45px;
+        padding: 28px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .join .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-right {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero h1 {
+        letter-spacing: -5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+    <a class="brand" href="#top">
+        <img src="img/logo.png" alt="Logo OMEN">
+        <span>OMEN</span>
+    </a>
+
+    <div class="nav-right">Private Community · Online</div>
+</header>
+
+<main id="top">
+
+    <section class="hero">
+        <div class="eyebrow">✦ A Private Gaming Community</div>
+
+        <h1>OMEN</h1>
+
+        <div class="line"></div>
+
+        <p class="tagline">ONE NAME. ONE COMMUNITY.</p>
+        <p class="subtag">Not just a group. A presence.</p>
+
+        <div class="actions">
+            <a class="btn btn-primary"
+               href="https://discord.gg/Gcjzcby7V5"
+               target="_blank"
+               rel="noopener noreferrer">
+                Join our Discord
+            </a>
+
+            <a class="btn btn-secondary" href="#members">
+                Explore Members ↓
+            </a>
+        </div>
+    </section>
+
+    <section class="section" id="members">
+        <div class="kicker">The people behind the name</div>
+
+        <h2>Meet the members<span style="color:#a78bfa">.</span></h2>
+
+        <p class="section-desc">
+            Ogni membro ha il suo posto nella community OMEN.
+        </p>
+
+        <div class="counter">
+            <span id="memberCount">03</span> MEMBERS
+        </div>
+
+        <div class="member-track" id="memberTrack"></div>
+    </section>
+
+    <section class="join" id="join">
+        <div>
+            <div class="kicker">Your next move</div>
+
+            <h2>Want to join OMEN?</h2>
+
+            <p>
+                Vuoi conoscere la community? Passa dal nostro Discord
+                e prova a entrare nel gruppo.
+            </p>
+        </div>
+
+        <a class="btn btn-primary"
+           href="https://discord.gg/Gcjzcby7V5"
+           target="_blank"
+           rel="noopener noreferrer">
+            Enter the server ↗
+        </a>
+    </section>
+
+</main>
+
+<footer class="footer">
+    © <span id="year"></span> <strong>OMEN</strong> — Private Community
+</footer>
+
+<script>
+const members = [
+    {
+        name: "ASHE",
+        number: "#1",
+        image: "img/ashe.png"
+    },
+    {
+        name: "SHELBY",
+        number: "#2",
+        image: "img/shelby.png"
+    },
+    {
+        name: "BZ",
+        number: "#3",
+        image: "img/bz.png"
+    }
+];
+
+const track = document.getElementById("memberTrack");
+
+track.innerHTML = members.map(member => `
+    <article class="member">
+        <div class="member-image">
+            <span class="member-number">${member.number}</span>
+            <img
+                src="${member.image}"
+                alt="${member.name}"
+            >
+        </div>
+
+        <div class="member-info">
+            <div class="member-label">OMEN MEMBER</div>
+            <div class="member-name">${member.name}</div>
+            <div class="member-role">Core Community</div>
+        </div>
+    </article>
+`).join("");
+
+document.getElementById("memberCount").textContent =
+    String(members.length).padStart(2, "0");
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
